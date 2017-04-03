@@ -14,7 +14,7 @@ import transaction.Transaction;
  */
 public class BoffoController implements BoffoListenerInterface{
 
-    //Add references to required modules
+    //We need to add references to required modules.
 
     protected BoffoRegisterGUI gui;
     protected Transaction transaction;
@@ -35,23 +35,26 @@ public class BoffoController implements BoffoListenerInterface{
 
     private void transactionPanel() {
         this.gui.loadTransactionPanel();
+        //register transaction moduel as a listener.
     }
 
     private void inventoryPanel() {
-
+        this.gui.loadInventoryPanel();
+        //register inventory module as a listener.
     }
 
     private void loginPanel() {
-
+        this.gui.loadLoginPanel();
     }
 
     private void registerPanelListener() {
-
+        //We want a generic module so that we can give it as an argument on this method.
     }
 
     @Override
     public void messageRecieved(BoffoEvent event) {
         switch (event.getMessage().getCode()) {
+            //Add more cases as we get more messages to refer back to.
             case BoffoMessenger.TRANSACTION_PANEL:
                 System.out.println("Boffo Controller responding to Transaction Panel Event...");
                 this.transactionPanel();
