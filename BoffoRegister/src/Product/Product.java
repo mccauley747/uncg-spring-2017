@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Product{
-
         protected Product prod;
         protected String name;
         protected int quantity;
@@ -10,7 +9,6 @@ public class Product{
         protected int UPC;
         protected String SKU;
         protected enum rating {E, T, M}
-        
     public Product(){
         this.prod = null;
         this.name = "";
