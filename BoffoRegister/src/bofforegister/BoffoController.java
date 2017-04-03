@@ -1,10 +1,12 @@
+
+
 package bofforegister;
 
 import events.BoffoEvent;
 import gui.BoffoRegisterGUI;
 import javafx.stage.Stage;
 import events.BoffoListenerInterface;
-import events.BoffoMessenger;
+import events.Routing;
 
 import transaction.Transaction;
 
@@ -52,11 +54,11 @@ public class BoffoController implements BoffoListenerInterface{
     @Override
     public void messageRecieved(BoffoEvent event) {
         switch (event.getMessage().getCode()) {
-            case BoffoMessenger.TRANSACTION_PANEL:
+            case Routing.ADD_TRANSACTION:
                 System.out.println("Boffo Controller responding to Transaction Panel Event...");
                 this.transactionPanel();
                 break;
-            case BoffoMessenger.EXIT_PANEL:
+            case Routing.EXIT_PANEL:
                 System.out.println("Boffo Controller responding to Main Menu Panel Event...");
                 this.mainPanel();
                 break;
