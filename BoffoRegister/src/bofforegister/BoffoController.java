@@ -1,5 +1,3 @@
-
-
 package bofforegister;
 
 import events.BoffoEvent;
@@ -54,7 +52,6 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(login == null) {
                     login = new LoginModule();
                 }
-
                 this.gui.loadLoginPanel();*/
 
 
@@ -66,7 +63,6 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(admin == null) {
                     admin = new AdministrationModule();
                 }
-
                 this.gui.loadAdminPanel();*/
 
                 break;
@@ -77,7 +73,6 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(user == null) {
                     user = new UserModule();
                 }
-
                 this.gui.loadUserPanel();*/
 
                 break;
@@ -88,7 +83,6 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(inventory == null) {
                     inventory = new InventoryModule();
                 }
-
                 this.gui.loadInventoryPanel();*/
 
                 break;
@@ -99,7 +93,6 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(transaction == null) {
                     transaction = new TransactionModule();
                 }
-
                 this.gui.loadTransactionPanel();*/
 
                 break;
