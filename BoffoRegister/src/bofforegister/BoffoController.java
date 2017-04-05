@@ -4,9 +4,6 @@ import events.BoffoEvent;
 import gui.BoffoRegisterGUI;
 import javafx.stage.Stage;
 import events.BoffoListenerInterface;
-import events.Routing;
-import events.BoffoMessenger;
-import java.util.ArrayList;
 import printer.Printer;
 import transaction.Transaction;
 
@@ -16,14 +13,10 @@ import transaction.Transaction;
  */
 public class BoffoController implements BoffoListenerInterface{
     protected Transaction transaction = null;
-
-    //protected Administration administration = null;
-
-    //protected User user = null;
-
     protected Printer printer = null;
     protected BoffoRegisterGUI gui = null;
     protected BoffoBaseModule activemodule = null;
+    //include a currentUser at all times to keep up with.
 
     BoffoController(Stage primaryStage) {
         this.gui = new BoffoRegisterGUI(primaryStage);
