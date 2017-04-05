@@ -58,13 +58,13 @@ public class Product extends database{
     }
     public void setUPC(int u){
         this.prod.UPC = u;
-    }W
+    }
     public void setSKU(String s){
         this.prod.SKU = s;
     }
 @Override
-    public static create(){
-        this.prod = Product.create();
+    public void create(){
+        this.prod = super.create();
     }
     public static Product findBySKU(String s){
         return Database.findBySKU(s);
