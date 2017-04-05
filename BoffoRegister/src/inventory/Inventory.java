@@ -2,13 +2,13 @@ package inventory;
 
 import database.BoffoDbObject;
 import events.BoffoEvent;
-import events.BoffoMessenger;  
+import events.BoffoMessenger;   
 import Product.Product;
 //Inventory has to be able to minipulate the data base
 
 public class Inventory{
     BoffoDbObject DB;
-    Product pr;  
+    Product pr;
 
     
     public Inventory(){
