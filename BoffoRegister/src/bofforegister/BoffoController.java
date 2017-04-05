@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import events.BoffoListenerInterface;
 import events.Routing;
 import events.BoffoMessenger;
+import java.util.ArrayList;
 import transaction.Transaction;
 
 /**
@@ -25,6 +26,7 @@ public class BoffoController implements BoffoListenerInterface{
     protected Transaction transaction = null;
 
     // protected Printer printer = null;
+    protected ArrayList<BoffoModuleInterface> modules = null;
 
     protected BoffoRegisterGUI gui = null;
 
@@ -127,6 +129,8 @@ public class BoffoController implements BoffoListenerInterface{
                 System.out.println("Boffo Controller responding to Transaction Panel Event...");
               //  this.transactionPanel();
                 break;
+            case Routing.TRANSACTION_PANEL:
+                System.out.println("Boffo Controller responding to Main Menu Panel Event...");
             case Routing.EXIT_PANEL:
                 System.out.println("Boffo Controller responding to Main Menu Panel Event...");
               //  this.mainPanel();
