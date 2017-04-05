@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import events.BoffoListenerInterface;
 import events.BoffoMessenger;
 import transaction.Transaction;
-
+import inventory.Inventory;
 /**
  *
  * @author joshuabr7 & joshlmilligan
@@ -24,6 +24,7 @@ public class BoffoController implements BoffoListenerInterface{
     protected Transaction transaction = null;
 
     // protected Printer printer = null;
+    protected Inventory inventory;
 
     protected BoffoRegisterGUI gui = null;
 

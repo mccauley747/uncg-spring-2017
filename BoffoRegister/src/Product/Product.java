@@ -43,7 +43,7 @@ public class Product{
     }
     public void setUPC(int u){
         this.prod.UPC = u;
-    }W
+    }
     public void setSKU(String s){
         this.prod.SKU = s;
     }
