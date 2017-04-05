@@ -1,9 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
-import database.BoffoDatabaseAPI;
+import database.BoffoDatbaseAPI;
 import database.BoffoDbObject;
+import java.util.UUID;
 
-public class Product extends database{
+public class Product extends BoffoDbObject{
         protected Product prod;
         protected String name;
         protected int quantity;
@@ -11,6 +12,7 @@ public class Product extends database{
         protected int UPC;
         protected String SKU;
         protected Rating rat;
+        protected UUID uuid;
         
     public class Rating{
         protected Rating rat;
@@ -27,6 +29,7 @@ public class Product extends database{
         }
 }
     public Product(){
+        this.uuid = null;
         this.prod = null;
         this.name = "";
         this.quantity = 0;
@@ -35,7 +38,7 @@ public class Product extends database{
         this.price = 0.00;
         this.rat = null;
     }
-    public Product(Product prod, String name, int quant, double price, int UPC, String s, Rating r){
+    public Product(Product prod, String name, int quant, double price, int UPC, String s, Rating r, UUID u){
        this.prod = prod;
        this.name = name;
        this.quantity = quant;
@@ -43,6 +46,7 @@ public class Product extends database{
        this.UPC = UPC;
        this.SKU = s;
        this.rat = r;
+       this.uuid = this.create();
     }
     public Product getProduct(){
         return this.prod;
@@ -62,9 +66,10 @@ public class Product extends database{
     public void setSKU(String s){
         this.prod.SKU = s;
     }
-@Override
     public void create(){
-        this.prod = super.create();
+        //return UUID from create() overridden
+        //databse needs access type
+        //this.prod = super.create();
     }
     public static Product findBySKU(String s){
         return Database.findBySKU(s);
