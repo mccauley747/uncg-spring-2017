@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 import events.BoffoEvent;
 import events.BoffoMessenger;
+import events.Routing;
 
 public final class BoffoRegisterGUI {
 
@@ -151,7 +152,7 @@ public final class BoffoRegisterGUI {
             public void handle(ActionEvent e) {
                 //loadTransactionPanel();
                 BoffoEvent transactionEvt = new BoffoEvent(e.getSource(),
-                        BoffoMessenger.TRANSACTION_PANEL);
+                        Routing.TRANSACTION_PANEL);
             }
 
         });
@@ -211,7 +212,7 @@ public final class BoffoRegisterGUI {
             public void handle(ActionEvent e) {
                 //loadMainPanel();
                 BoffoEvent exitEvt = new BoffoEvent(e.getSource(),
-                        BoffoMessenger.EXIT_PANEL);
+                        Routing.EXIT_PANEL);
             }
 
         });
