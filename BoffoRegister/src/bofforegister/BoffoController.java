@@ -14,19 +14,10 @@ import transaction.Transaction;
  * @author joshuabr7 & joshlmilligan
  */
 public class BoffoController implements BoffoListenerInterface{
-
-    // protected LoginModule login = null;
-
-    // protected AdministrationModule administration = null;
-
-    // protected UserModule user = null;
-
-    // protected InventoryModule inventory = null;
-
     protected Transaction transaction = null;
 
     // protected Printer printer = null;
-    protected ArrayList<BoffoModuleInterface> modules = null;
+    protected ArrayList<BoffoBaseModule> modules = null;
 
     protected BoffoRegisterGUI gui = null;
 
@@ -40,7 +31,7 @@ public class BoffoController implements BoffoListenerInterface{
      * @param event
      */
     private void changePanel(BoffoEvent event) {
-
+        //Think I want to change the parameter to changePanel(BoffoBaseModule module)
         switch(event.getMessage().getCode()) {
 
             case 2:
@@ -122,24 +113,13 @@ public class BoffoController implements BoffoListenerInterface{
         // printer.print(transactionModule);
     }
 
-    @Override
-    public void messageRecieved(BoffoEvent event) {
-        switch (event.getMessage().getCode()) {
-            case Routing.ADD_TRANSACTION:
-                System.out.println("Boffo Controller responding to Transaction Panel Event...");
-              //  this.transactionPanel();
-                break;
-            case Routing.TRANSACTION_PANEL:
-                System.out.println("Boffo Controller responding to Main Menu Panel Event...");
-            case Routing.EXIT_PANEL:
-                System.out.println("Boffo Controller responding to Main Menu Panel Event...");
-              //  this.mainPanel();
-                break;
-            default:
-                System.out.println("Ignoring message because it is irrelevant to the Controller. "
-                                        + "\nPassing along the following event message "
-                                        + event.getMessage().getCode());
+    private void registerListener(BoffoBaseModule nextModule) {
+        modules.get(modules.indexOf(nextModule));
+        //addBRegisterListener (add to GUI)
+    }
 
+    @Override
+    public void messageReceived(BoffoEvent event) {
 
         /**
         * Also using cascading if else statements to catch events
