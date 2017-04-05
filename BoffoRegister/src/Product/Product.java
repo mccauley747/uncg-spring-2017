@@ -72,21 +72,21 @@ public class Product extends BoffoDbObject{
         //this.prod = super.create();
     }
     public static Product findBySKU(String s){
-        return Database.findBySKU(s);
+        return BoffoDatbaseAPI.findBySKU(s);
     }
     public static Product findByUPC(int u){
-        return Database.findByUPC(u);
+        return BoffoDatbaseAPI.findByUPC(u);
     }
     public static Product findByName(String n){
-        return Database.findByName(n);
+        return BoffoDatbaseAPI.findByName(n);
     }
     public static Product findbyQuantity(int q){
-        return Database.findByQuantity(q);
+        return BoffoDatbaseAPI.findByQuantity(q);
     }
     public static Product findByPrice(double p){
-        return Database.findByPrice(p);
+        return BoffoDatbaseAPI.findByPrice(p);
     }
     public static Product findByRating(Rating r){
-        return Database.findByRating(r);
+        return BoffoDatbaseAPI.findByRating(r);
     }
 } 
