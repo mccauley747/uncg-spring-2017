@@ -7,6 +7,7 @@ import events.BoffoListenerInterface;
 import events.Routing;
 import events.BoffoMessenger;
 import java.util.ArrayList;
+import printer.Printer;
 import transaction.Transaction;
 
 /**
@@ -16,10 +17,13 @@ import transaction.Transaction;
 public class BoffoController implements BoffoListenerInterface{
     protected Transaction transaction = null;
 
-    // protected Printer printer = null;
-    protected ArrayList<BoffoBaseModule> modules = null;
+    //protected Administration administration = null;
 
+    //protected User user = null;
+
+    protected Printer printer = null;
     protected BoffoRegisterGUI gui = null;
+    protected BoffoBaseModule activemodule = null;
 
     BoffoController(Stage primaryStage) {
         this.gui = new BoffoRegisterGUI(primaryStage);
@@ -113,9 +117,9 @@ public class BoffoController implements BoffoListenerInterface{
         // printer.print(transactionModule);
     }
 
-    private void registerListener(BoffoBaseModule nextModule) {
-        modules.get(modules.indexOf(nextModule));
-        //addBRegisterListener (add to GUI)
+    private void registerListener(BoffoBaseModule newModule) {
+        activemodule =  newModule;
+        //addBRegisterListener the nextModule to the activemodule (add to GUI).
     }
 
     @Override
