@@ -1,12 +1,9 @@
-package Product;
-
 import java.util.List;
 import java.util.ArrayList;
 import database.BoffoDatabaseAPI;
 import database.BoffoDbObject;
 
-public class Product{
-
+public class Product extends database{
         protected Product prod;
         protected String name;
         protected int quantity;
@@ -18,13 +15,14 @@ public class Product{
     public class Rating{
         protected Rating rat;
         
-        public Rating (){
-            this.rat = null;
-        }
+        public Rating(){
+            this.rat = null;        
+}
         public Rating (Rating r){
             this.rat = r;
         }
         public String toString(Rating r){
+            this.rat = r;
             return this.rat.toString();
         }
 }
@@ -64,6 +62,10 @@ public class Product{
     public void setSKU(String s){
         this.prod.SKU = s;
     }
+@Override
+    public static create(){
+        this.prod = Product.create();
+    }
     public static Product findBySKU(String s){
         return Database.findBySKU(s);
     }
@@ -79,5 +81,7 @@ public class Product{
     public static Product findByPrice(double p){
         return Database.findByPrice(p);
     }
-
+    public static Product findByRating(Rating r){
+        return Database.findByRating(r);
+    }
 } 
