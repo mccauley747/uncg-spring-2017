@@ -3,19 +3,15 @@ package database;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class ConnectionManager {
 
     private Connection dbConnection;
-    protected static Statement dbStatementStmt;
-    protected static ResultSet dbResultSet;
 
     public ConnectionManager() {
 
     }
-    
+
     /**
      * Connect to the DataBase
      * @param url, username, password
@@ -24,7 +20,6 @@ public class ConnectionManager {
     public boolean connectToDB(String url, String uName, String uPass) {
         try {
             dbConnection = DriverManager.getConnection(url, uName, uPass);
-            dbStatementStmt = dbConnection.createStatement();
             System.out.println("Connection Successful.");
             return true;
         } catch(SQLException e) {
@@ -32,10 +27,10 @@ public class ConnectionManager {
             return false;
         }
     }
-    
+
     /**
      * Close the DataBase
-     * @param 
+     * @param
      * @return null
      */
     public void closeConnection() {
@@ -46,11 +41,11 @@ public class ConnectionManager {
             System.out.println(ex);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param null
-     * @return Connection 
+     * @return Connection
      */
     public Connection getConnection() {
         return dbConnection;
