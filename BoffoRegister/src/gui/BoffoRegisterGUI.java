@@ -24,78 +24,48 @@ import javafx.stage.Stage;
 
 import events.BoffoEvent;
 import events.BoffoMessenger;
-import events.Routing;
 
 public final class BoffoRegisterGUI {
 
     private final Stage BoffoStage;
 
-    private VBox addVBox(String header) {
-        VBox vbox = new VBox();
-        vbox.setPadding(new Insets(10));
-        vbox.setSpacing(8);
-        Text title = new Text(header);
-        title.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        vbox.getChildren().add(title);
-        return vbox;
+    public BoffoRegisterGUI(Stage s) {
+        this.BoffoStage = s;
+        this.loadLoginPanel();
     }
 
-    //TODO: Stubbed in method for building the admin scene
-    public void /*Scene*/ buildAdminPanel() {/*...*/}
-
     //TODO: Stubbed in method for loading Admin panel
-    public void loadAdminPanel() {/*...*/}
+    public void loadAdminPanel() {
 
-    //TODO: Stubbed in method for building the transaction scene
-    public void /*Scene*/ buildInventoryPanel() {/*...*/}
+    }
 
     //TODO: Stubbed in method for loading Inventory panel
-    public void loadInventoryPanel() {/*...*/}
+    public void loadInventoryPanel() {
+        //switch to inventory scene
+        System.out.println("Loading Inventory Panel");
+        BoffoStage.setTitle("Inventory");
+        Scene InvScene = buildInventoryPanel();
+        BoffoStage.setScene(InvScene);
+       BoffoStage.show();//make scene visible
+    }
+    public void loadLoginPanel() {
+        System.out.println("Loading Login Panel");
+        BoffoStage.setTitle("BoffoRegister Login");
+        Scene loginScene = this.buildLoginScene();
+        this.BoffoStage.setScene(loginScene);
+        //Sets up the primary stage.
+        this.BoffoStage.show();
+    }
+        
 
-    /*
-     * TODO: Display ticket items in a TableView or list
-     * This method helps build the transaction panel. Creates several buttons
-     *    including an exit button to return to main panel
-     */
-    public Scene buildTransactionPanel() {
-        Button btnAddItem1 = new Button("Add item 1");
-        Button btnAddItem2 = new Button("Add item 2");
-        Button btnExit = new Button("Exit");
+    public void loadMainPanel() {
+        System.out.println("Loading Main Panel");
+        BoffoStage.setTitle("Boffo Register Main Menu");
+        Scene mainScene = this.buildMainScene();
 
-        VBox transactionOptions = this.addVBox("Select Operation");
-        transactionOptions.setAlignment(Pos.CENTER);
-        transactionOptions.getChildren().add(btnAddItem1);
-        transactionOptions.getChildren().add(btnAddItem2);
-        transactionOptions.getChildren().add(btnExit);
-
-        btnAddItem1.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {/*...*/}
-
-        });
-
-        btnAddItem2.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {/*...*/}
-
-        });
-
-        //Fire an event upon pressing the Exit button.
-        btnExit.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                loadMainPanel();
-//                BoffoEvent exitEvt = new BoffoEvent(e.getSource(),
-//                        Routing.EXIT_PANEL);
-            }
-
-        });
-
-        Scene sceneTransaction = new Scene(transactionOptions, 400, 400);
-        return sceneTransaction;
+        //Set up the primary stage.
+        BoffoStage.setScene(mainScene);
+        this.BoffoStage.show();
     }
 
     public void loadTransactionPanel() {
@@ -106,91 +76,17 @@ public final class BoffoRegisterGUI {
         BoffoStage.show();
     }
 
-    //TODO: Stubbed in method to check if entered credentials are valid
-    /**
-     * @param username The username obtained from the login panel.
-     * @param password The password obtained from the login panel.
-     * @return Boolean
-     */
-    private boolean isValidUser(String username, String password) {
-        //Compare String objects to those in the database.
-        //If credentials exist then return true.
-        //If credentials do not exist then prompt user to reenter credentials.
-        return true;
+    //TODO: Stubbed in method for building the admin scene
+    public void /*Scene*/ buildAdminPanel() {
+
     }
 
-    public Scene buildMainScene() {
-        Button btnTransaction = new Button("Transaction");
-        Button btnInventory = new Button("Inventory");
-        Button btnAdministration = new Button("Administration");
-        Button btnExit = new Button("Exit");
-
-        VBox vbox = this.addVBox("Select Operation");
-        vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().add(btnTransaction);
-        vbox.getChildren().add(btnInventory);
-        vbox.getChildren().add(btnAdministration);
-        vbox.getChildren().add(btnExit);
-
-        //Fire an event to go to the Transaction panel.
-        btnTransaction.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                loadTransactionPanel();
-//                BoffoEvent evtTransaction = new BoffoEvent(e.getSource(),
-//                        Routing.TRANSACTION_PANEL);
-            }
-
-        });
-
-        //Fire an event to go to the Inventory panel.
-        btnInventory.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                loadInventoryPanel();
-                //BoffoEvent object declaration for Inventory goes here.
-            }
-
-        });
-
-        //Fire an event to go to the Administration panel.
-        btnAdministration.setOnAction(new EventHandler<ActionEvent>(){
-
-            @Override
-            public void handle(ActionEvent e) {
-                loadAdminPanel();
-                //BoffoEvent object declaration for Administration goes here.
-            }
-
-        });
-
-        //Fire an event to go back to the Main panel.
-        btnExit.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                loadLoginPanel();
-		//BoffoEvent object declaration for Exit goes here.
-            }
-
-        });
-
-        // Create the scene and return.
-        Scene scene = new Scene(vbox, 325, 275);
-
-        return scene;
+    public void launchTransaction(){
+        loadMainPanel();
     }
-
-    public void loadMainPanel() {
-        System.out.println("Loading Main Panel");
-        BoffoStage.setTitle("Boffo Register Main Menu");
-        Scene sceneMain = this.buildMainScene();
-
-        //Set up the main stage.
-        BoffoStage.setScene(sceneMain);
-        this.BoffoStage.show();
+    public void launchInventory(){
+        loadMainPanel();//same as above bc i added inventory 
+        //button to buildMainScene() which launch inventory scene if press
     }
 
     //Login screen with username & password text fields, plus a sign-in button.
@@ -200,7 +96,7 @@ public final class BoffoRegisterGUI {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-        Scene scene = new Scene(grid, 800, 600);
+        Scene scene = new Scene(grid, 325, 275);
 
         //Add a title with specified font and text to the scene.
         Text sceneTitle = new Text("Welcome to BoffoRegister");
@@ -235,24 +131,128 @@ public final class BoffoRegisterGUI {
                 loadMainPanel();
 //                BoffoEvent evt = new BoffoEvent(e.getSource(),
 //                        BoffoMessenger.ADD_TRANSACTION);
+            } 
+        }); 
+
+        return scene;
+    }
+
+    //TODO: Stubbed in method for building the transaction scene
+    public Scene buildInventoryPanel() {
+        //creat buttons for each methods in inventory class
+        Button addI = new Button("Add inventory");
+         Button removeI = new Button("Remove inventory");
+         Button searchI = new Button("Search inventory");
+        Button exitI = new Button("exit");
+        //creat box and add buttons to box
+        VBox box = this.addVBox("Inventory Options");
+        box.getChildren().add(addI);
+        box.getChildren().add(removeI);
+         box.getChildren().add(searchI); 
+        box.getChildren().add(exitI);
+         //add box to scene and set size
+        Scene InvScene = new Scene(box, 800, 600);
+        //if exit, return to main scene
+        exitI.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                loadMainPanel();
             }
+        });
+        return InvScene;//final result is presented
+    }
+
+     public Scene buildMainScene() {
+        Button btnTransaction = new Button();
+        Button inventoryBtn= new Button("Inventory");//add inventory button
+        btnTransaction.setText("Transaction");
+        VBox vbox = this.addVBox("Select Operation");
+        vbox.getChildren().add(btnTransaction);
+        vbox.getChildren().add(inventoryBtn);//add inventory button to main scene
+        // Create the scene and return.
+        Scene scene = new Scene(vbox, 800, 600);
+
+        btnTransaction.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                loadTransactionPanel();
+            }
+
+        });
+        //if inventory button press launch inventory scene
+        inventoryBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) { 
+                loadInventoryPanel();
+            }
+
         });
 
         return scene;
     }
 
-    public void loadLoginPanel() {
-        System.out.println("Loading Login Panel");
-        BoffoStage.setTitle("BoffoRegister Login");
-        Scene sceneLogin = this.buildLoginScene();
-        this.BoffoStage.setScene(sceneLogin);
+    /*
+     * TODO: Display ticket items in a TableView or list
+     * This method helps build the transaction panel. Creates several buttons
+     *    including an exit button to return to main panel
+     */
+    public Scene buildTransactionPanel() {
 
-        //Set up the login stage.
-        this.BoffoStage.show();
+        Button addItem1Btn = new Button("Add item 1");
+        Button addItem2Btn = new Button("Add item 2");
+        Button exitBtn = new Button("Exit");
+
+        VBox transactionOptionsVB = this.addVBox("Select Operation");
+        transactionOptionsVB.getChildren().add(addItem1Btn);
+        transactionOptionsVB.getChildren().add(addItem2Btn);
+        transactionOptionsVB.getChildren().add(exitBtn);
+
+        Scene transactionScene = new Scene(transactionOptionsVB, 800, 600);
+
+        addItem1Btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {/*...*/}
+
+        });
+
+        addItem2Btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {/*...*/}
+
+        });
+
+        //Fire an event upon pressing the Exit button.
+        exitBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                //loadMainPanel();
+                BoffoEvent exitEvt = new BoffoEvent(e.getSource(),
+                        BoffoMessenger.EXIT_PANEL);
+            }
+
+        });
+
+        return transactionScene;
     }
 
-    public BoffoRegisterGUI(Stage s) {
-        this.BoffoStage = s;
-        this.loadLoginPanel();
+    private VBox addVBox(String header) {
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(10));
+        vbox.setSpacing(8);
+        Text title = new Text(header);
+        title.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+        vbox.getChildren().add(title);
+        return vbox;
+    }
+
+    //TODO: Stubbed in method to check if entered credentials are valid
+    private boolean isValidUser() {
+        return true;
     }
 }
