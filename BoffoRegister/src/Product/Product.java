@@ -53,8 +53,21 @@ public class product extends BoffoDbObject{
     public String create(){
        return null;
     }
+    /*
+    cast(Object o) is a method of java.lang.Class<T> class and casts 
+    an object to the class specified by the Class object, in this case; product.
+    */
+    public static product castAsProduct(BoffoDbObject o){
+        
+        try{
+            return product.class.cast(o);
+        } catch (ClassCastException e){
+            System.out.println("Cast unsuccessful.");
+            return null;
+        }
+    }
     public static product loadBySKU(String field, String u){
-        return BoffoDbObject.loadObject(field, u);
+        return product.castAsProduct(BoffoDbObject.loadDbObject(field, u));
     }
     public static product loadByUPC(String field, int u){
         return BoffoDbObject.loadObject(field, u);
