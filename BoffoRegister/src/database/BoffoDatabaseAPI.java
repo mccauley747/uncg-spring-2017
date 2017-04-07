@@ -2,13 +2,13 @@ package database;
 
 import java.sql.SQLException;
 
-public class BoffoDatbaseAPI {
+public class BoffoDatabaseAPI {
 
     private final String dbUrl = "jdbc://localhost:3306/SCHEMANAME";
     private ConnectionManager dbConnection;
     private Query dbQuery;
 
-    public BoffoDatbaseAPI() {
+    public BoffoDatabaseAPI() {
         dbConnection = new ConnectionManager();
 
         try {
