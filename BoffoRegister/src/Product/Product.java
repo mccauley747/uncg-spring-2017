@@ -4,8 +4,8 @@ import database.BoffoDatbaseAPI;
 import database.BoffoDbObject;
 import java.util.UUID;
 
-public class Product extends BoffoDbObject{
-        protected Product prod;
+public class product extends BoffoDbObject{
+        protected product prod;
         protected String name;
         protected int quantity;
         protected double price;
@@ -16,7 +16,7 @@ public class Product extends BoffoDbObject{
         
     public class Rating{
         protected Rating rat;
-        
+   
         public Rating(){
             this.rat = null;        
 }
@@ -28,7 +28,7 @@ public class Product extends BoffoDbObject{
             return this.rat.toString();
         }
 }
-    public Product(){
+    public product(){
         this.uuid = null;
         this.prod = null;
         this.name = "";
@@ -38,7 +38,7 @@ public class Product extends BoffoDbObject{
         this.price = 0.00;
         this.rat = null;
     }
-    public Product(Product prod, String name, int quant, double price, int UPC, String s, Rating r, UUID u){
+    public product(product prod, String name, int quant, double price, int UPC, String s, Rating r, UUID u){
        this.prod = prod;
        this.name = name;
        this.quantity = quant;
@@ -48,7 +48,7 @@ public class Product extends BoffoDbObject{
        this.rat = r;
        this.uuid = this.create();
     }
-    public Product getProduct(){
+    public product getProduct(){
         return this.prod;
     }
     public void setName(String n){
@@ -69,24 +69,29 @@ public class Product extends BoffoDbObject{
     public void create(){
         //return UUID from create() overridden
         //databse needs access type
-        //this.prod = super.create();
+        
+        this.prod.toString() = (Product)
     }
-    public static Product findBySKU(String s){
+    public static product findBySKU(String s){
         return BoffoDatbaseAPI.findBySKU(s);
     }
-    public static Product findByUPC(int u){
+    public static product findByUPC(int u){
         return BoffoDatbaseAPI.findByUPC(u);
     }
-    public static Product findByName(String n){
+    public static product findByName(String n){
         return BoffoDatbaseAPI.findByName(n);
     }
-    public static Product findbyQuantity(int q){
+    public static product findbyQuantity(int q){
         return BoffoDatbaseAPI.findByQuantity(q);
     }
-    public static Product findByPrice(double p){
+    public static product findByPrice(double p){
         return BoffoDatbaseAPI.findByPrice(p);
     }
-    public static Product findByRating(Rating r){
+    public static product findByRating(Rating r){
         return BoffoDatbaseAPI.findByRating(r);
+    }
+    public void loadByPrice(double p){
+        this.loadObj('price field', p);
+        //where loadObj(field, value) is a function looking up from a table
     }
 } 
