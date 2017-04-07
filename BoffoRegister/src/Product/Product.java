@@ -1,3 +1,4 @@
+import database.BoffoDatbaseAPI;
 import database.BoffoDbObject;
 
 public class product extends BoffoDbObject{
@@ -32,22 +33,22 @@ public class product extends BoffoDbObject{
         return this;
     }
     public void setName(String n){
-        this.prod.name = n;
+        this.name = n;
     }
     public void setPrice(double p){
-        this.prod.price = p;
+        this.price = p;
     }
     public void setQuantity(int q){
-        this.prod.quantity = q;
+        this.quantity = q;
     }
     public void setUPC(int u){
-        this.prod.UPC = u;
+        this.UPC = u;
     }
     public void setSKU(String s){
-        this.prod.SKU = s;
+        this.SKU = s;
     }
     public String create(){
-       return BoffoDbObject.create();
+       return null;
     }
     public static product findBySKU(String s){
         return BoffoDatbaseAPI.findBySKU(s);
