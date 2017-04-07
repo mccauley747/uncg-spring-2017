@@ -1,22 +1,13 @@
-import java.util.List;
-import java.util.ArrayList;
 
-<<<<<<< HEAD
 public class product extends BoffoDbObject{
-        protected product prod;
-=======
-public class Product{
-
-        protected Product prod;
->>>>>>> refs/remotes/origin/master
+   
         protected String name;
         protected int quantity;
         protected double price;
         protected int UPC;
         protected String SKU;
-<<<<<<< HEAD
         protected Rating rat;
-        protected UUID uuid;
+        protected String uuid;
         
     public class Rating{
         protected Rating rat;
@@ -32,36 +23,26 @@ public class Product{
             return this.rat.toString();
         }
 }
-    public product(){
-        this.uuid = null;
-=======
-        protected enum rating {E, T, M}
-        
     public Product(){
->>>>>>> refs/remotes/origin/master
-        this.prod = null;
         this.name = "";
         this.quantity = 0;
         this.price = 0.00;
         this.UPC = 0;
         this.SKU = "";
         this.rating = null;
+        this.uuid = null;
     }
-<<<<<<< HEAD
-    public product(product prod, String name, int quant, double price, int UPC, String s, Rating r, UUID u){
-=======
-    public Product(Product prod, String name, int quant, double price, int UPC, String s, enum e){
->>>>>>> refs/remotes/origin/master
-       this.prod = prod;
+    public Product(String name, int quant, double price, int UPC, String s, enum e, String u){
        this.name = name;
        this.quantity = quant;
        this.price = price;
        this.UPC = UPC;
        this.SKU = s;
        this.rating = e;
+       this.uuid = u;
     }
     public product getProduct(){
-        return this.prod;
+        return this;
     }
     public void setName(String n){
         this.prod.name = n;
@@ -78,12 +59,8 @@ public class Product{
     public void setSKU(String s){
         this.prod.SKU = s;
     }
-<<<<<<< HEAD
-    public void create(){
-        //return UUID from create() overridden
-        //databse needs access type
-        
-        this.prod.toString() = (Product)
+    public String create(){
+       return BoffoDbObject.create();
     }
     public static product findBySKU(String s){
         return BoffoDatbaseAPI.findBySKU(s);
@@ -106,22 +83,7 @@ public class Product{
     public void loadByPrice(double p){
         this.loadObj('price field', p);
         //where loadObj(field, value) is a function looking up from a table
-    }
-} 
-=======
-    public void setEnum(enum en){
-        switch (en){
-            case E:
-                this.prod.rating = E;
-                break;
-            case T:
-                this.prod.rating = T;
-                break;
-            case M:
-                this.prod.rating = M;
-                break;
-        }
-    }
+    } 
     public Product findBySKU(String s){
         //Keep narrowest scope possible for parameter s.
         return null;
@@ -147,4 +109,3 @@ public class Product{
         return null;
     }
 } 
->>>>>>> refs/remotes/origin/master
