@@ -4,20 +4,27 @@ import events.BoffoEvent;
 import gui.BoffoRegisterGUI;
 import javafx.stage.Stage;
 import events.BoffoListenerInterface;
-import events.Routing;
 import events.BoffoMessenger;
-import java.util.ArrayList;
 import transaction.Transaction;
-
+import inventory.Inventory;
 /**
  *
  * @author joshuabr7 & joshlmilligan
  */
 public class BoffoController implements BoffoListenerInterface{
+
+    // protected LoginModule login = null;
+
+    // protected AdministrationModule administration = null;
+
+    // protected UserModule user = null;
+
+    // protected InventoryModule inventory = null;
+
     protected Transaction transaction = null;
 
     // protected Printer printer = null;
-    protected ArrayList<BoffoBaseModule> modules = null;
+    protected Inventory inventory;
 
     protected BoffoRegisterGUI gui = null;
 
@@ -31,7 +38,7 @@ public class BoffoController implements BoffoListenerInterface{
      * @param event
      */
     private void changePanel(BoffoEvent event) {
-        //Think I want to change the parameter to changePanel(BoffoBaseModule module)
+
         switch(event.getMessage().getCode()) {
 
             case 2:
@@ -45,6 +52,7 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(login == null) {
                     login = new LoginModule();
                 }
+
                 this.gui.loadLoginPanel();*/
 
 
@@ -56,6 +64,7 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(admin == null) {
                     admin = new AdministrationModule();
                 }
+
                 this.gui.loadAdminPanel();*/
 
                 break;
@@ -66,6 +75,7 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(user == null) {
                     user = new UserModule();
                 }
+
                 this.gui.loadUserPanel();*/
 
                 break;
@@ -76,6 +86,7 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(inventory == null) {
                     inventory = new InventoryModule();
                 }
+
                 this.gui.loadInventoryPanel();*/
 
                 break;
@@ -86,6 +97,7 @@ public class BoffoController implements BoffoListenerInterface{
                 /*if(transaction == null) {
                     transaction = new TransactionModule();
                 }
+
                 this.gui.loadTransactionPanel();*/
 
                 break;
@@ -113,13 +125,8 @@ public class BoffoController implements BoffoListenerInterface{
         // printer.print(transactionModule);
     }
 
-    private void registerListener(BoffoBaseModule nextModule) {
-        modules.get(modules.indexOf(nextModule));
-        //addBRegisterListener (add to GUI)
-    }
-
     @Override
-    public void messageReceived(BoffoEvent event) {
+    public void messageRecieved(BoffoEvent event) {
 
         /**
         * Also using cascading if else statements to catch events
@@ -142,5 +149,4 @@ public class BoffoController implements BoffoListenerInterface{
         }
         // If the messageString does not fall within range, ignore it.
     }
-}
 }
