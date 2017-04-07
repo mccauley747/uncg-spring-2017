@@ -10,7 +10,10 @@ public class product extends BoffoDbObject{
         protected String SKU;
         protected Rating rat;
         protected String uuid;
-        
+        /* Since a product with a field name and value is part of the object
+           maybe add member variables accordingly, but for narrow scope's sake
+           keep the variables local for now.
+        */
     public product(){
         this.name = "";
         this.quantity = 0;
@@ -50,50 +53,24 @@ public class product extends BoffoDbObject{
     public String create(){
        return null;
     }
-    public static product findBySKU(String s){
-        return BoffoDatbaseAPI.findBySKU(s);
+    public static product loadBySKU(String field, String u){
+        return BoffoDbObject.loadObject(field, u);
     }
-    public static product findByUPC(int u){
-        return BoffoDatbaseAPI.findByUPC(u);
+    public static product loadByUPC(String field, int u){
+        return BoffoDbObject.loadObject(field, u);
     }
-    public static product findByName(String n){
-        return BoffoDatbaseAPI.findByName(n);
+    public static product loadByName(String n){
+        return BoffoDbObject.loadObject(n);
     }
-    public static product findbyQuantity(int q){
-        return BoffoDatbaseAPI.findByQuantity(q);
+    public static product loadByQuantity(String field, int q){
+        return BoffoDbObject.loadObject(field, q);
     }
-    public static product findByPrice(double p){
-        return BoffoDatbaseAPI.findByPrice(p);
+    public static product loadByRating(String field, Rating r){
+        return BoffoDbObject.loadObject(field, r);
     }
-    public static product findByRating(Rating r){
-        return BoffoDatbaseAPI.findByRating(r);
-    }
-    public void loadByPrice(double p){
-        this.loadObj('price field', p);
-        //where loadObj(field, value) is a function looking up from a table
+    public static product loadByPrice(String field, double p){
+        return BoffoDbObject.loadObject(field, p);
+        //where loadByPrice(field, value) is a function looking up from a table
+        //cast as Product
     } 
-    public Product findBySKU(String s){
-        //Keep narrowest scope possible for parameter s.
-        return null;
-    }
-    public Product findByUPC(int u){
-        //Keep narrowest scope possible for parameter i.
-        return null;
-    }
-    public Product findByName(String n){
-        //Keep narrowest scope possible for parameter n.
-        return null;
-    }
-    public List findbyQuantity(int n){
-        /*Find the products that have quantity n and return
-        a list of those products.*/
-        return null;
-    }
-    public Product findByPrice(double p){
-        /*Depending on the variety of products will this method 
-        be able to find a specific product. Otherwise, return a list of 
-        products that have parameter p.
-        */
-        return null;
-    }
 } 
