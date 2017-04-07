@@ -1,87 +1,106 @@
-import java.util.List;
-import java.util.ArrayList;
+package Product;
 
-public class Product{
+//import database.BoffoDatbaseAPI;
+import database.BoffoDbObject;
 
-        protected Product prod;
+public class Product extends BoffoDbObject{
+        
+        protected String tableName = "product";
         protected String name;
         protected int quantity;
         protected double price;
         protected int UPC;
         protected String SKU;
-        protected enum rating {E, T, M}
-        
+//        protected Rating rat;
+        protected String table;
+        protected String uuid;
+        /* Since a product with a field name and value is part of the object
+           maybe add member variables accordingly, but for narrow scope's sake
+           keep the variables local for now.
+        */
     public Product(){
-        this.prod = null;
+        super();
         this.name = "";
         this.quantity = 0;
         this.price = 0.00;
         this.UPC = 0;
         this.SKU = "";
-        this.rating = null;
+//        this.rat = null;
+        this.uuid = null;
     }
-    public Product(Product prod, String name, int quant, double price, int UPC, String s, enum e){
-       this.prod = prod;
+    public Product(String name, int quant, double price, int UPC, String s, String u){
        this.name = name;
        this.quantity = quant;
        this.price = price;
        this.UPC = UPC;
        this.SKU = s;
-       this.rating = e;
+//       this.rat = r;
+       this.uuid = u;
     }
     public Product getProduct(){
-        return this.prod;
+        return this;
     }
     public void setName(String n){
-        this.prod.name = n;
+        this.name = n;
     }
     public void setPrice(double p){
-        this.prod.price = p;
+        this.price = p;
     }
     public void setQuantity(int q){
-        this.prod.quantity = q;
+        this.quantity = q;
     }
     public void setUPC(int u){
-        this.prod.UPC = u;
+        this.UPC = u;
     }
     public void setSKU(String s){
-        this.prod.SKU = s;
+        this.SKU = s;
     }
-    public void setEnum(enum en){
-        switch (en){
-            case E:
-                this.prod.rating = E;
-                break;
-            case T:
-                this.prod.rating = T;
-                break;
-            case M:
-                this.prod.rating = M;
-                break;
+
+//    public String create(){
+//        return BoffoDbObject.create().toString();
+//       //return product.castAsProduct(BoffoDbObject.create()).toString();
+//    }
+    /*
+    cast(Object o) is a method of java.lang.Class<T> class and casts 
+    an object to the class specified by the Class object, in this case; product.
+    */
+    public static Product castAsProduct(BoffoDbObject o){
+        
+        try{
+            return Product.class.cast(o);
+        } catch (ClassCastException e){
+            System.out.println("Cast unsuccessful.");
+            return null;
         }
     }
-    public Product findBySKU(String s){
-        //Keep narrowest scope possible for parameter s.
-        return null;
+    public static Product loadBySKU(String field, String u){
+        BoffoDbObject db = new BoffoDbObject();
+        return Product.castAsProduct(db.load(field, u));
     }
-    public Product findByUPC(int u){
-        //Keep narrowest scope possible for parameter i.
-        return null;
-    }
-    public Product findByName(String n){
-        //Keep narrowest scope possible for parameter n.
-        return null;
-    }
-    public List findbyQuantity(int n){
-        /*Find the products that have quantity n and return
-        a list of those products.*/
-        return null;
-    }
-    public Product findByPrice(double p){
-        /*Depending on the variety of products will this method 
-        be able to find a specific product. Otherwise, return a list of 
-        products that have parameter p.
-        */
-        return null;
+//    public static product loadByUPC(String field, int u){
+//        return BoffoDbObject.loadObject(field, u);
+//    }
+//    public static product loadByName(String n){
+//        return BoffoDbObject.loadObject(n);
+//    }
+//    public static product loadByQuantity(String field, int q){
+//        return BoffoDbObject.loadObject(field, q);
+//    }
+//    public static product loadByRating(String field, Rating r){
+//        return BoffoDbObject.loadObject(field, r);
+//    }
+//    public static product loadByPrice(String field, double p){
+//        return BoffoDbObject.loadObject(field, p);
+//        //where loadByPrice(field, value) is a function looking up from a table
+//        //cast as Product
+//    } 
+    public static void main(String[] args) {
+        Product p = new Product();
+        int num = 333333;
+        String numString = String.valueOf(num);
+        
+       p.load("field","value" );
+       // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
+        System.out.println("object: " + p.toString());
     }
 } 

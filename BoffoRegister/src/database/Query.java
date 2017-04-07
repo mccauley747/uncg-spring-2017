@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Query {
 
-    private Statement statement;
+    protected static Statement statement;
 
     /*
     * Initialize with the current connection
