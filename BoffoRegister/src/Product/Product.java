@@ -1,3 +1,4 @@
+import database.BoffoDbObject;
 
 public class product extends BoffoDbObject{
    
@@ -9,36 +10,22 @@ public class product extends BoffoDbObject{
         protected Rating rat;
         protected String uuid;
         
-    public class Rating{
-        protected Rating rat;
-   
-        public Rating(){
-            this.rat = null;        
-}
-        public Rating (Rating r){
-            this.rat = r;
-        }
-        public String toString(Rating r){
-            this.rat = r;
-            return this.rat.toString();
-        }
-}
-    public Product(){
+    public product(){
         this.name = "";
         this.quantity = 0;
         this.price = 0.00;
         this.UPC = 0;
         this.SKU = "";
-        this.rating = null;
+        this.rat = null;
         this.uuid = null;
     }
-    public Product(String name, int quant, double price, int UPC, String s, enum e, String u){
+    public product(String name, int quant, double price, int UPC, String s, Rating r, String u){
        this.name = name;
        this.quantity = quant;
        this.price = price;
        this.UPC = UPC;
        this.SKU = s;
-       this.rating = e;
+       this.rat = r;
        this.uuid = u;
     }
     public product getProduct(){
