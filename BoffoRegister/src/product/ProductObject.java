@@ -84,7 +84,8 @@ public class ProductObject extends BoffoDbObject{
             return null;
         }
     }
-    //2nd parameter changed to String for now restricted to only String type
+    //2nd parameter changed to String for now restricted to only String type.
+    //Maybe make a generic tableElement helper class with field and value
     public static ProductObject loadBySKU(String field, String u){
         return ProductObject.castAsProduct(createDbObject().load(field, u));
     }
