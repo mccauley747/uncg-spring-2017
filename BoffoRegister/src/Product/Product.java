@@ -90,7 +90,7 @@ public class Product extends BoffoDbObject{
         //cast as Product
     } 
     public static void main(String[] args) {
-        int num = 333333;
+        int num = 333;
         String numString = String.valueOf(num);
         Product p = new Product();
         System.out.println("testing numString: " + numString);
