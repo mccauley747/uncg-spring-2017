@@ -139,5 +139,9 @@ public class ProductObject extends BoffoDbObject{
 //       p.load("string inside", tableName);
        // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
         System.out.println("PRODUCT: " + p.toString());
+        System.out.println("--------------");
+        ProductObject p3 = new ProductObject();
+        p3.setName("nameeee");
+        System.out.println("testing toString: " + p3.toString());
     }
 } 
