@@ -1,5 +1,4 @@
-package Product;
-
+package product;
 import database.BoffoDatbaseAPI;
 import database.BoffoDbObject;
 
