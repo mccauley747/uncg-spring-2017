@@ -1,6 +1,7 @@
 package product;
 import database.BoffoDatbaseAPI;
 import database.BoffoDbObject;
+//Will extend TicketElement later which inherts from BoffoDbObject.
 
 public class ProductObject extends BoffoDbObject{
    
