@@ -13,10 +13,7 @@ public class ProductObject extends BoffoDbObject{
         protected Rating rat;
         protected final String tableName = "Product";
         protected String uuid;
-        /* Since a product with a field name and value is part of the object
-           maybe add member variables accordingly, but for narrow scope's sake
-           keep the variables local for now.
-        */
+
     public ProductObject(){
         this.name = "";
         this.quantity = 0;
