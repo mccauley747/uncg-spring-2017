@@ -89,24 +89,24 @@ public class Product extends BoffoDbObject{
         //where loadByPrice(field, value) is a function looking up from a table
         //cast as Product
     } 
-    public static void main(String[] args) {
-        int num = 333;
-        String numString = String.valueOf(num);
-        Product p = new Product();
-        System.out.println("testing numString: " + numString);
-        System.out.println(Product.loadByName(p.tableName, numString));
-        System.out.println(BoffoDbObject.create().getUuid());
-        System.out.println("--------------------");
-        p.setName("hello");
-        p.setPrice(10.2);
-        p.setQuantity(3);
-        p.setSKU("skuskuskuskusku");
-        p.setUPC(5555);
-        p.setUuid("uuid");
-        System.out.println(p.getProduct());
-        
-//       p.load("string inside", tableName);
-       // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
-//        System.out.println("object: " + p.toString());
-    }
+//    public static void main(String[] args) {
+//        int num = 333;
+//        String numString = String.valueOf(num);
+//        Product p = new Product();
+//        System.out.println("testing numString: " + numString);
+//        System.out.println(Product.loadByName(p.tableName, numString));
+//        System.out.println(BoffoDbObject.create().getUuid());
+//        System.out.println("--------------------");
+//        p.setName("hello");
+//        p.setPrice(10.2);
+//        p.setQuantity(3);
+//        p.setSKU("skuskuskuskusku");
+//        p.setUPC(5555);
+//        p.setUuid("uuid");
+//        System.out.println(p.getProduct());
+//        
+////       p.load("string inside", tableName);
+//       // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
+////        System.out.println("object: " + p.toString());
+//    }
 } 
