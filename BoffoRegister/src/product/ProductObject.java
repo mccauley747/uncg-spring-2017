@@ -10,7 +10,7 @@ public class ProductObject extends BoffoDbObject{
         protected double price;
         protected int UPC;
         protected String SKU;
-//        protected Rating rat;
+        protected Rating rat;
         protected final String tableName = "Product";
         protected String uuid;
         /* Since a product with a field name and value is part of the object
@@ -23,16 +23,16 @@ public class ProductObject extends BoffoDbObject{
         this.price = 0.00;
         this.UPC = 0;
         this.SKU = "";
-//        this.rat = null;
+        this.rat = null;
         this.uuid = null;
     }
-    public ProductObject(String name, int quant, double price, int UPC, String s, String u){
+    public ProductObject(String name, int quant, double price, int UPC, String sk, Rating r, String u){
        this.name = name;
        this.quantity = quant;
        this.price = price;
        this.UPC = UPC;
-       this.SKU = s;
-//       this.rat = r;
+       this.SKU = sk;
+       this.rat = r;
        this.uuid = u;
     }
     public void setName(String n){
@@ -65,8 +65,14 @@ public class ProductObject extends BoffoDbObject{
     public String getSKU(){
         return this.SKU;
     }
+    public void setRating(Rating r){
+        this.rat = r;
+    }
+    public Rating getRating(){
+        return this.rat;
+    }
     public ProductObject getProduct(){
-        return new ProductObject(this.name, this.quantity, this.price, this.UPC, this.SKU, this.uuid);
+        return new ProductObject(this.name, this.quantity, this.price, this.UPC, this.SKU, this.rat, this.uuid);
     }
         @Override
     public String toString(){
