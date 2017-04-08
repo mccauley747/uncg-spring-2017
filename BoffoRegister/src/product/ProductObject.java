@@ -78,7 +78,7 @@ public class ProductObject extends BoffoDbObject{
     public String toString(){
         String str = "Name: " + this.getName() + "\n" + 
                      "Quantity: " + this.getQuantity() + "\n" + 
-                     "Price: " + this.getPrice() + "\n" + 
+                     "Price: $" + this.getPrice() + "\n" + 
                      "UPC: " + this.getUPC() + "\n" + 
                      "SKU: " + this.getSKU() + "\n" + 
                      "UUID: " + this.uuid;
