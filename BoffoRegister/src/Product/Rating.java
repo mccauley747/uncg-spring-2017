@@ -4,6 +4,7 @@
 
         public Rating(){
             this.name = null;
+            this.age = 0;
 }
         public Rating (String _name, int _age){
             this.name = _name;
