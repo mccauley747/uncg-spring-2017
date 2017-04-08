@@ -127,8 +127,8 @@ public class ProductObject extends BoffoDbObject{
         String numString = String.valueOf(num);
         ProductObject p = new ProductObject();
         System.out.println("testing numString: " + numString);
-        System.out.println(ProductObject.loadByName(p.tableName, numString));
-        System.out.println(BoffoDbObject.create().getUuid());
+        System.out.println(ProductObject.loadByName("field", p.tableName));
+        System.out.println("UUID: " + BoffoDbObject.create().getUuid());
         System.out.println("--------------------");
         p.setName("hello");
         p.setPrice(10.2);
