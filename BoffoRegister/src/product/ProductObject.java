@@ -68,6 +68,16 @@ public class ProductObject extends BoffoDbObject{
     public ProductObject getProduct(){
         return new ProductObject(this.name, this.quantity, this.price, this.UPC, this.SKU, this.uuid);
     }
+        @Override
+    public String toString(){
+        String str = "Name: " + this.getName() + "\n" + 
+                     "Quantity: " + this.getQuantity() + "\n" + 
+                     "Price: " + this.getPrice() + "\n" + 
+                     "UPC: " + this.getUPC() + "\n" + 
+                     "SKU: " + this.getSKU() + "\n" + 
+                     "UUID: " + this.uuid;
+        return str;
+    }
     public static BoffoDbObject createDbObject(){
         return BoffoDbObject.create();
     }
@@ -106,25 +116,22 @@ public class ProductObject extends BoffoDbObject{
         //where loadByPrice(field, value) is a function looking up from a table
         //cast as Product
     } 
-//    public static void main(String[] args) {
-//        int num = 333;
-//        String numString = String.valueOf(num);
-//        ProductObject p = new ProductObject();
-//        System.out.println("testing numString: " + numString);
-//        System.out.println(ProductObject.loadByName(p.tableName, numString));
-//        System.out.println(BoffoDbObject.create().getUuid());
-//        System.out.println("--------------------");
-//        p.setName("hello");
-//        p.setPrice(10.2);
-//        p.setQuantity(3);
-//        p.setSKU("skuskuskuskusku");
-//        p.setUPC(5555);
-//        p.setUuid("uuid");
-//        ProductObject p2 = new ProductObject("name", 5, 3.33, 7, "SKU", "UUID");
-//        System.out.println(p2.getSKU() + p2.getName());
-//        
-////       p.load("string inside", tableName);
-//       // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
-////        System.out.println("object: " + p.toString());
-//    }
+    public static void main(String[] args) {
+        int num = 333;
+        String numString = String.valueOf(num);
+        ProductObject p = new ProductObject();
+        System.out.println("testing numString: " + numString);
+        System.out.println(ProductObject.loadByName(p.tableName, numString));
+        System.out.println(BoffoDbObject.create().getUuid());
+        System.out.println("--------------------");
+        p.setName("hello");
+        p.setPrice(10.2);
+        p.setQuantity(3);
+        p.setSKU("skuskuskuskusku");
+        p.setUPC(5555);
+        p.setUuid("uuid#");
+//       p.load("string inside", tableName);
+       // System.out.println("testing castAsProduct() " + Product.castAsProduct(p.load("tableName", numString)));
+        System.out.println("PRODUCT: " + p.toString());
+    }
 } 
