@@ -1,15 +1,12 @@
-
-
 package bofforegister;
 
 import events.BoffoEvent;
 import gui.BoffoRegisterGUI;
 import javafx.stage.Stage;
 import events.BoffoListenerInterface;
-import events.Routing;
 import events.BoffoMessenger;
 import transaction.Transaction;
-
+import inventory.Inventory;
 /**
  *
  * @author joshuabr7 & joshlmilligan
@@ -27,6 +24,7 @@ public class BoffoController implements BoffoListenerInterface{
     protected Transaction transaction = null;
 
     // protected Printer printer = null;
+    protected Inventory inventory;
 
     protected BoffoRegisterGUI gui = null;
 
@@ -129,20 +127,6 @@ public class BoffoController implements BoffoListenerInterface{
 
     @Override
     public void messageRecieved(BoffoEvent event) {
-        switch (event.getMessage().getCode()) {
-            case Routing.ADD_TRANSACTION:
-                System.out.println("Boffo Controller responding to Transaction Panel Event...");
-              //  this.transactionPanel();
-                break;
-            case Routing.EXIT_PANEL:
-                System.out.println("Boffo Controller responding to Main Menu Panel Event...");
-              //  this.mainPanel();
-                break;
-            default:
-                System.out.println("Ignoring message because it is irrelevant to the Controller. "
-                                        + "\nPassing along the following event message "
-                                        + event.getMessage().getCode());
-
 
         /**
         * Also using cascading if else statements to catch events
@@ -165,5 +149,4 @@ public class BoffoController implements BoffoListenerInterface{
         }
         // If the messageString does not fall within range, ignore it.
     }
-}
 }
