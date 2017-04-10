@@ -67,7 +67,7 @@ public class BoffoController implements BoffoListenerInterface {
         }
         else if(_event.getMessage().getCode() <= 20) {
             //
-            this.preformAction(_event);
+            this.performAction(_event);
         }
         // If the messageString does not fall within range, ignore it.
     }
@@ -157,7 +157,7 @@ public class BoffoController implements BoffoListenerInterface {
      * Respond to events that require instructions to be sent.
      * @param _event
      */
-    private void preformAction(BoffoEvent _event) {
+    private void performAction(BoffoEvent _event) {
 
         switch(_event.getMessage().getCode()) {
             default:
