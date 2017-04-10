@@ -3,10 +3,13 @@ package database;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 public class ConnectionManager {
 
-    private Connection dbConnection;
+    protected static PreparedStatement preparedStatement;
+
+    protected static Connection dbConnection;
 
     public ConnectionManager() {
 
