@@ -8,7 +8,7 @@ Utility Package:
     Pair<T>
 
 Transaction Package:
-    ReceiptElement
+    TicketElement
 
 Receipt:
     private Pairlist<ReceiptElement> elements
@@ -21,7 +21,7 @@ Receipt:
         elements = Bundle.processBundles(products)
 
 Product:
-    extends ReceiptElement
+    extends TicketElement
     public Product clone()
     public static List<Product> getAllProducts()
     public static List<Product> getAllProducts(boolean enabled)

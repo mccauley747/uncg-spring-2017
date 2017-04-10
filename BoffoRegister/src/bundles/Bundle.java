@@ -4,7 +4,7 @@ import Product.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bundle extends ReceiptElement {
+public class Bundle extends TicketElement {
 
     /*  Product needs to have:
         public Product clone()
@@ -48,7 +48,7 @@ public class Bundle extends ReceiptElement {
         return new ArrayList();
     }
 
-    public static PairList<ReceiptElement> processBundles(PairList<Product> products) {
+    public static PairList<TicketElement> processBundles(PairList<Product> products) {
         // Recursive method that will return the smallest list of bundles and products.
 
         return null;
@@ -104,13 +104,13 @@ public class Bundle extends ReceiptElement {
     public double getPrice() {
         switch (discountType) {
             case PERCENT:
-                return ReceiptElement.getPriceProducts(products) - ReceiptElement.getPriceProducts(products) * discountAmount / 100;
+                return TicketElement.getPriceProducts(products) - TicketElement.getPriceProducts(products) * discountAmount / 100;
             case DOLLAR:
-                return ReceiptElement.getPriceProducts(products) - discountAmount;
+                return TicketElement.getPriceProducts(products) - discountAmount;
             case BOGO:
-                return ReceiptElement.getPriceProducts(products) / 2.0;
+                return TicketElement.getPriceProducts(products) / 2.0;
             default:
-                return ReceiptElement.getPriceProducts(products);
+                return TicketElement.getPriceProducts(products);
         }
     }
 
