@@ -108,18 +108,15 @@ public class BoffoController implements BoffoListenerInterface {
                     login = new LoginModule();
                 }
                 this.gui.loadLoginPanel();*/
-
-
                 break;
 
             case 4:
                 // Change to the admin GUI panel.
 
-                /*if(admin == null) {
-                    admin = new AdministrationModule();
+                if(admin == null) {
+                    admin = new Administration();
                 }
-                this.gui.loadAdminPanel();*/
-
+                this.gui.loadAdminPanel();
                 break;
 
             case 5:
@@ -129,7 +126,6 @@ public class BoffoController implements BoffoListenerInterface {
                     user = new User();
                 }
                 //we would load the user panel;
-
                 break;
 
             case 6:
@@ -140,7 +136,6 @@ public class BoffoController implements BoffoListenerInterface {
                 }
 
                 this.gui.loadInventoryPanel();
-
                 break;
 
             case 7:
@@ -150,7 +145,6 @@ public class BoffoController implements BoffoListenerInterface {
                     transaction = new Transaction();
                 }
                 this.gui.loadTransactionPanel();
-
                 break;
 
             default:
