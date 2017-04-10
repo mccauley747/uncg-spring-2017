@@ -10,7 +10,11 @@ import java.sql.SQLException;
 
 public class Query {
 
+<<<<<<< HEAD
     protected static Statement statement;
+=======
+    private final Statement statement;
+>>>>>>> master
 
     /*
     * Initialize with the current connection

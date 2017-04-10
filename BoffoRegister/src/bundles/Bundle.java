@@ -1,26 +1,26 @@
 package bundles;
 
-import Product.Product;
 import java.util.ArrayList;
 import java.util.List;
+import product.ProductObject;
 
 public class Bundle extends TicketElement {
 
     /*  Product needs to have:
         public Product clone()
-        public static List<Product> getAllProducts()
-        public static List<Product> getAllProducts(boolean enabled)
+        public static List<ProductObject> getAllProducts()
+        public static List<ProductObject> getAllProducts(boolean enabled)
      */
     private int numberAllowed;
     // Could also be integers so that comparisons could be easier, YYYYMMDD eg.  20171205 < 20171210
     // Date class in Java is depreciated, could make own Date object but using integers may be better.
     private String startDate;
     private String endDate;
-    private PairList<Product> products;
+    private PairList<ProductObject> products;
     private DiscountType discountType;
     private double discountAmount;
 
-    private Bundle(String name, String description, PairList<Product> products, DiscountType discountType, double discountAmount, String endDate) {
+    private Bundle(String name, String description, PairList<ProductObject> products, DiscountType discountType, double discountAmount, String endDate) {
         super(name, description);
         this.discountType = discountType;
         this.discountAmount = discountAmount;
@@ -35,7 +35,7 @@ public class Bundle extends TicketElement {
         // Will need to save itself to the database
     }
 
-    public static Bundle generator(String name, String description, PairList<Product> products, DiscountType discountType, double discountAmount, String endDate) {
+    public static Bundle generator(String name, String description, PairList<ProductObject> products, DiscountType discountType, double discountAmount, String endDate) {
         return new Bundle(name, description, products, discountType, discountAmount, endDate);
     }
 
@@ -48,13 +48,13 @@ public class Bundle extends TicketElement {
         return new ArrayList();
     }
 
-    public static PairList<TicketElement> processBundles(PairList<Product> products) {
+    public static PairList<TicketElement> processBundles(PairList<ProductObject> products) {
         // Recursive method that will return the smallest list of bundles and products.
 
         return null;
     }
 
-    private static PairList<Bundle> getApplicable(PairList<Product> products) {
+    private static PairList<Bundle> getApplicable(PairList<ProductObject> products) {
         return null;
     }
 
@@ -95,7 +95,7 @@ public class Bundle extends TicketElement {
         return numberAllowed;
     }
     
-    public PairList<Product> getProducts(){
+    public PairList<ProductObject> getProducts(){
         return products.clone();
     }
     
