@@ -8,9 +8,9 @@ import database.BoffoDbObject;
  * @author jonathanholley jessicadenney
  */
 
-public class administration extends BoffoDbObject {
-//Create variables required for administration class.
-    protected administration admin;
+public class Administration extends BoffoDbObject {
+//Create variables required for Administration class.
+    protected Administration admin;
     protected String storeName;
     protected String receiptMessage;
     protected double storeHours;
@@ -18,7 +18,7 @@ public class administration extends BoffoDbObject {
     protected double taxRate;
 
 //Sets variables to null values.
-    public administration() {
+    public Administration() {
 
         this.admin = null;
         this.storeName = "";
@@ -29,7 +29,7 @@ public class administration extends BoffoDbObject {
     }
 
 //Sets variable values to themselves.
-    public administration(administration admin, String storeName, String receiptMessage, double storeHours, int phoneNumber, float taxRate) {
+    public Administration(Administration admin, String storeName, String receiptMessage, double storeHours, int phoneNumber, float taxRate) {
 
         this.admin = admin;
         this.storeName = storeName;
@@ -40,7 +40,7 @@ public class administration extends BoffoDbObject {
     }
 
 //Placeholder to pull admin file from database or to pull form a table.
-    public administration getAdministration() {
+    public Administration getAdministration() {
         return this.admin;
     }
 //Command to set store name.
@@ -64,23 +64,23 @@ public class administration extends BoffoDbObject {
         this.admin.taxRate = t;
     }
 //Command to find store name from database/file.
-    public administration findByStoreName(String n) {
+    public Administration findByStoreName(String n) {
         return null;
     }
 //Command to find receipt message from database/file.
-    public administration findByReceiptMessage(String m) {
+    public Administration findByReceiptMessage(String m) {
         return null;
     }
 //Command to find store hours from database/file.
-    public administration findByStoreHours(String sh) {
+    public Administration findByStoreHours(String sh) {
         return null;
     }
 //Command to find phone number from database/file.
-    public administration findByPhoneNumber(int ph) {
+    public Administration findByPhoneNumber(int ph) {
         return null;
     }
  //Command to find tax rate from database/file.
-    public administration findByTaxRate(double tr) {
+    public Administration findByTaxRate(double tr) {
         return null;
     }
 }
