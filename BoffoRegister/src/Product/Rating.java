@@ -1,4 +1,5 @@
-    public class Rating{
+package product;   
+public class Rating{
         protected String name;
         protected int age;
 
