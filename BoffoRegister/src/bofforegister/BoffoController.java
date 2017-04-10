@@ -14,20 +14,26 @@ package bofforegister;
  * @author Joshua Brown & Josh Milligan
  */
 
+import administration.Administration;
 import events.BoffoEvent;
 import gui.BoffoRegisterGUI;
 import javafx.stage.Stage;
 import events.BoffoListenerInterface;
+import inventory.Inventory;
 import java.util.ArrayList;
 import java.util.List;
 import printer.Printer;
 import transaction.Transaction;
+import user.User;
 
-public class BoffoController implements BoffoListenerInterface, BoffoBaseModule{
+public class BoffoController implements BoffoListenerInterface {
     protected Transaction transaction = null;
+    protected User user = null;
+    protected Inventory inventory = null;
+    protected Administration admin = null;
     protected Printer printer = null;
     protected BoffoRegisterGUI gui = null;
-    protected BoffoBaseModule activeModule = null;
+    protected BoffoListenerInterface activeModule = null;
     final protected List boffoListener = new ArrayList();
     //include a currentUser at all times to keep up with.
 
@@ -52,7 +58,7 @@ public class BoffoController implements BoffoListenerInterface, BoffoBaseModule{
         if(_event.getMessage().getCode() == 0) {
             // check user login data
         }
-        else if (_event.getMessage().getCode()== 1) {
+        else if (_event.getMessage().getCode() == 1) {
             printReceipt();
         }
         else if(_event.getMessage().getCode() <= 10) {
@@ -91,7 +97,8 @@ public class BoffoController implements BoffoListenerInterface, BoffoBaseModule{
 
             case 2:
                 // Change to the main GUI panel.
-
+                this.gui.loadMainPanel();
+                this.activeModule = null;
                 break;
 
             case 3:
@@ -118,35 +125,36 @@ public class BoffoController implements BoffoListenerInterface, BoffoBaseModule{
             case 5:
                 // Change to the user GUI panel.
 
-                /*if(user == null) {
-                    user = new UserModule();
+                if(user == null) {
+                    user = new User();
                 }
-                this.gui.loadUserPanel();*/
+                //we would load the user panel;
 
                 break;
 
             case 6:
                 // Change to the Inventory GUI panel.
 
-                /*if(inventory == null) {
-                    inventory = new InventoryModule();
+                if(inventory == null) {
+                    inventory = new Inventory();
                 }
-                this.gui.loadInventoryPanel();*/
+
+                this.gui.loadInventoryPanel();
 
                 break;
 
             case 7:
                 // Change to the Transaction GUI panel.
 
-                /*if(transaction == null) {
-                    transaction = new TransactionModule();
+                if(transaction == null) {
+                    transaction = new Transaction();
                 }
-                this.gui.loadTransactionPanel();*/
+                this.gui.loadTransactionPanel();
 
                 break;
 
             default:
-                // If its not a panel change _event, but in range, ignore it.
+                System.out.println("Not a Panel Change event, passing event to relevant class.");
                 break;
         }
     }
@@ -168,7 +176,7 @@ public class BoffoController implements BoffoListenerInterface, BoffoBaseModule{
         // printer.print(transactionModule);
     }
 
-    private void registerListener(BoffoBaseModule _newModule) {
+    private void registerListener(BoffoListenerInterface _newModule) {
         this.activeModule =  _newModule;
         //addBRegisterListener the nextModule to the activeModule (add to GUI).
     }
