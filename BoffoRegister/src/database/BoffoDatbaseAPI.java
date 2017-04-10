@@ -1,35 +1,32 @@
 package database;
 
+import java.sql.SQLException;
+
 public class BoffoDatbaseAPI {
 
     private final String dbUrl = "jdbc://localhost:3306/SCHEMANAME";
     private ConnectionManager dbConnection;
+    private Query dbQuery;
 
     public BoffoDatbaseAPI() {
         dbConnection = new ConnectionManager();
+
+        try {
+            dbQuery = new Query(dbConnection.getConnection());
+        } catch (SQLException ex) {
+            System.out.println("dbQueryError :" + ex);
+        }
     }
 
-    public void dbLogin(String uName, String uPass) {
-        dbConnection.connectToDB(dbUrl, "admin", "password");
+    public boolean dbLogin(String uName, String uPass) {
+        if(dbConnection.connectToDB(dbUrl, "admin", "password")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void dbLogout(){
+    public void dbLogout() {
         dbConnection.closeConnection();
-    }
-
-    public void createDbEntry(){
-
-    }
-
-    public void updateDbEntry(){
-
-    }
-
-    public void removeDbEntry(){
-
-    }
-
-    public void deleteDbEntry(){
-
     }
 }

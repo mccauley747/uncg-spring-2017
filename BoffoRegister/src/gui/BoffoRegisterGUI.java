@@ -41,24 +41,28 @@ public final class BoffoRegisterGUI {
 
     //TODO: Stubbed in method for loading Inventory panel
     public void loadInventoryPanel() {
-
+        //switch to inventory scene
+        System.out.println("Loading Inventory Panel");
+        BoffoStage.setTitle("Inventory");
+        Scene InvScene = buildInventoryPanel();
+        BoffoStage.setScene(InvScene);
+       BoffoStage.show();//make scene visible
     }
-
     public void loadLoginPanel() {
         System.out.println("Loading Login Panel");
         BoffoStage.setTitle("BoffoRegister Login");
         Scene loginScene = this.buildLoginScene();
         this.BoffoStage.setScene(loginScene);
-        
         //Sets up the primary stage.
         this.BoffoStage.show();
     }
+        
 
     public void loadMainPanel() {
         System.out.println("Loading Main Panel");
         BoffoStage.setTitle("Boffo Register Main Menu");
         Scene mainScene = this.buildMainScene();
-        
+
         //Set up the primary stage.
         BoffoStage.setScene(mainScene);
         this.BoffoStage.show();
@@ -79,6 +83,10 @@ public final class BoffoRegisterGUI {
 
     public void launchTransaction(){
         loadMainPanel();
+    }
+    public void launchInventory(){
+        loadMainPanel();//same as above bc i added inventory 
+        //button to buildMainScene() which launch inventory scene if press
     }
 
     //Login screen with username & password text fields, plus a sign-in button.
@@ -121,53 +129,67 @@ public final class BoffoRegisterGUI {
             @Override
             public void handle(ActionEvent e) {
                 loadMainPanel();
-//                BoffoEvent evt = new BoffoEvent(e.getSource(), 
+//                BoffoEvent evt = new BoffoEvent(e.getSource(),
 //                        BoffoMessenger.ADD_TRANSACTION);
-            }
-        });
+            } 
+        }); 
 
         return scene;
     }
 
     //TODO: Stubbed in method for building the transaction scene
-    public void /*Scene*/ buildInventoryPanel() {
+    public Scene buildInventoryPanel() {
+        //creat buttons for each methods in inventory class
+        Button addI = new Button("Add inventory");
+         Button removeI = new Button("Remove inventory");
+         Button searchI = new Button("Search inventory");
+        Button exitI = new Button("exit");
+        //creat box and add buttons to box
+        VBox box = this.addVBox("Inventory Options");
+        box.getChildren().add(addI);
+        box.getChildren().add(removeI);
+         box.getChildren().add(searchI); 
+        box.getChildren().add(exitI);
+         //add box to scene and set size
+        Scene InvScene = new Scene(box, 800, 600);
+        //if exit, return to main scene
+        exitI.setOnAction(new EventHandler<ActionEvent>() {
 
+            @Override
+            public void handle(ActionEvent e) {
+                loadMainPanel();
+            }
+        });
+        return InvScene;//final result is presented
     }
 
-    public Scene buildMainScene() {
+     public Scene buildMainScene() {
+        Button btnTransaction = new Button();
+        Button inventoryBtn= new Button("Inventory");//add inventory button
+        btnTransaction.setText("Transaction");
         VBox vbox = this.addVBox("Select Operation");
-        vbox.setAlignment(Pos.CENTER);
-
-        Button btnTransaction = new Button("Transaction");
         vbox.getChildren().add(btnTransaction);
+        vbox.getChildren().add(inventoryBtn);//add inventory button to main scene
+        // Create the scene and return.
+        Scene scene = new Scene(vbox, 800, 600);
 
-        Button btnInventory = new Button("Inventory");
-        vbox.getChildren().add(btnInventory);
-
-        //Fire an event upon pressing the Transaction button.
         btnTransaction.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent e) {
-                //loadTransactionPanel();
-                BoffoEvent transactionEvt = new BoffoEvent(e.getSource(), 
-                        BoffoMessenger.TRANSACTION_PANEL);
+                loadTransactionPanel();
             }
 
         });
+        //if inventory button press launch inventory scene
+        inventoryBtn.setOnAction(new EventHandler<ActionEvent>() {
 
-        //Fire an event upon pressing the Inventory button.
-        btnInventory.setOnAction(new EventHandler<ActionEvent>() {
-            
             @Override
-            public void handle(ActionEvent e) {
-                //loadInventoryPanel();
+            public void handle(ActionEvent e) { 
+                loadInventoryPanel();
             }
-            
-        });
 
-        // Create the scene and return.
-        Scene scene = new Scene(vbox, 325, 275);
+        });
 
         return scene;
     }
@@ -194,26 +216,26 @@ public final class BoffoRegisterGUI {
 
             @Override
             public void handle(ActionEvent e) {/*...*/}
-            
+
         });
-        
+
         addItem2Btn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent e) {/*...*/}
-            
+
         });
-        
+
         //Fire an event upon pressing the Exit button.
         exitBtn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent e) {
                 //loadMainPanel();
-                BoffoEvent exitEvt = new BoffoEvent(e.getSource(), 
+                BoffoEvent exitEvt = new BoffoEvent(e.getSource(),
                         BoffoMessenger.EXIT_PANEL);
             }
-            
+
         });
 
         return transactionScene;

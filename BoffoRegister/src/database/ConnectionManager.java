@@ -12,15 +12,27 @@ public class ConnectionManager {
 
     }
 
-    public void connectToDB(String url, String uName, String uPass) {
+    /**
+     * Connect to the DataBase
+     * @param url, username, password
+     * @return true if the connection is successful and return false if otherwise
+     */
+    public boolean connectToDB(String url, String uName, String uPass) {
         try {
             dbConnection = DriverManager.getConnection(url, uName, uPass);
             System.out.println("Connection Successful.");
+            return true;
         } catch(SQLException e) {
             System.out.print("Something went wrong trying to connect. "+e);
+            return false;
         }
     }
 
+    /**
+     * Close the DataBase
+     * @param
+     * @return null
+     */
     public void closeConnection() {
         try {
             dbConnection.close();
@@ -30,7 +42,13 @@ public class ConnectionManager {
         }
     }
 
+    /**
+     *
+     * @param null
+     * @return Connection
+     */
     public Connection getConnection() {
         return dbConnection;
     }
+
 }
