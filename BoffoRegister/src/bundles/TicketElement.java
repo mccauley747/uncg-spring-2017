@@ -2,8 +2,8 @@ package bundles;
 
 // Will be a transaction object
 
-import Product.Product;
 import database.BoffoDbObject;
+import product.ProductObject;
 
 // extends BoffoDatabaseObject
 public abstract class TicketElement extends BoffoDbObject{
@@ -22,11 +22,11 @@ public abstract class TicketElement extends BoffoDbObject{
         return 0.0;
     }
     
-    public static double getPriceProducts(PairList<Product> products){
+    public static double getPriceProducts(PairList<ProductObject> products){
         return getPriceTicketElements(toTicketElements(products));
     }
     
-    public static PairList<TicketElement> toTicketElements(PairList<Product> products){
+    public static PairList<TicketElement> toTicketElements(PairList<ProductObject> products){
         return new PairList();
     }
 
