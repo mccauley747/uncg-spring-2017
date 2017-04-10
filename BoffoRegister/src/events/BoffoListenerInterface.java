@@ -3,5 +3,5 @@ package events;
 //Maclean Frazier
 
 public interface BoffoListenerInterface {
-    public void messageReceived(BoffoEvent event);
+    public void messageReceived(BoffoListenerInterface sender, BoffoEvent event);
 }
