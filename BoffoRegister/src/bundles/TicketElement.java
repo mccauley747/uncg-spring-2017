@@ -6,27 +6,27 @@ import Product.Product;
 import database.BoffoDbObject;
 
 // extends BoffoDatabaseObject
-public abstract class ReceiptElement extends BoffoDbObject{
+public abstract class TicketElement extends BoffoDbObject{
 
     protected String name;
     protected String description;
 
-    protected ReceiptElement(String name, String description) {
+    protected TicketElement(String name, String description) {
         this.name = name;
         this.description = description;
     }
     
     public abstract double getPrice();
     
-    public static double getPriceReceiptElements(PairList<ReceiptElement> elements){
+    public static double getPriceTicketElements(PairList<TicketElement> elements){
         return 0.0;
     }
     
     public static double getPriceProducts(PairList<Product> products){
-        return getPriceReceiptElements(toReceiptElements(products));
+        return getPriceTicketElements(toTicketElements(products));
     }
     
-    public static PairList<ReceiptElement> toReceiptElements(PairList<Product> products){
+    public static PairList<TicketElement> toTicketElements(PairList<Product> products){
         return new PairList();
     }
 
